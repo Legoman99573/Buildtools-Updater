@@ -31,7 +31,7 @@ goto start)
 
 :start
 
-Echo Welcome to BuildTools Updater v.1.0 Beta
+Echo Welcome to BuildTools Updater v.0.1 Beta
 Echo Here is a list of commands:
 Echo clean -cleans out buildtools directory out
 Echo run -runs buildtools program
