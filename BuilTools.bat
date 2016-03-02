@@ -8,7 +8,6 @@ set buildtoolsname=BuildTools
 set buildtoolsver=
 set serverversion=1.9
 set apifolder=api
-
 set version=spigot-1.9
 set name=spigot
 set directory= 
@@ -18,20 +17,20 @@ rem Do not edit file below this line
 Echo Warning: You are using a beta version of this script. This script can possibly break causing buildtools not to launch correctly. Use at your own risk.
 pause
 
-If exist dependency (goto 1) else (mkdir dependency
+If exist \dependency (goto 1) else (mkdir \dependency
 Echo Created directory
 goto 1)
 :1
-If exist %apifolder% (goto 2) else (mkdir %apifolder%
+If exist \%apifolder% (goto 2) else (mkdir \%apifolder%
 Echo Created folder %apifolder%
 goto 2)
-If exist pluginfixed (goto start) else (mkdir pluginfixed
+If exist \pluginfixed (goto start) else (mkdir \pluginfixed
 Echo Created folder pluginfixed
 goto start)
 
 :start
 
-Echo Welcome to BuildTools Updater v.0.1 Beta
+Echo Welcome to BuildTools Updater v.0.3 Beta
 Echo Here is a list of commands:
 Echo clean -cleans out buildtools directory out
 Echo run -runs buildtools program
@@ -88,33 +87,26 @@ echo Sucessfully copied API to folder
 goto start) else
 (echo Must create folder %apifolder%
 echo creating folder %apifolder% for you :D
-mkdir %apifolder%
+mkdir \%apifolder%
 goto :apirun)
 
-@echo off
-
 :copy
-IF EXIST %version%.jar (rename %version%.jar %name%.jar
-Echo Successfully renamed %version%.jar to %name%.jar
-goto step2) ELSE (Echo Failed to rename %version%.jar to %name%.jar
-Echo Edit this batch file and change the "version" value to the version in your folder
-goto start)
 
 IF EXIST %version%.jar (rename %version%.jar %name%.jar
 Echo Successfully renamed %version%.jar to %name%.jar
-goto step2) ELSE (Echo Failed to rename %version%.jar to %name%.jar
+goto step-2) ELSE (Echo Failed to rename %version%.jar to %name%.jar
 Echo Edit this batch file and change the "version" value to the version in your folder
 goto start)
 
-:step2
+:step-2
 echo attempting to copy %name%.jar to %directory%
 IF EXIST %name%.jar (copy %name%.jar %directory% %variables%
 Echo Successfully copied to the destination %directory%
 Echo Renaming batch file back to its original state
-goto step3) ELSE (Echo There was an error during the process. There shouldn't have been changes while running.
+goto step-3) ELSE (Echo There was an error during the process. There shouldn't have been changes while running.
 goto start)
 
-:step3
+:step-3
 rem This is to rename a file you named back, so the batch wont break
 IF EXIST %name%.jar (rename %name%.jar %version%.jar
 Echo Renamed Back to version%.jar
