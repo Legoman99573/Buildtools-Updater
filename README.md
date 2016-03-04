@@ -1,2 +1,2 @@
 # Buildtools-Updater
-Updates everythinh without entering a browser.
+Updates everything without entering a browser.
