@@ -107,7 +107,7 @@ goto start)
 :changes
 color 2
 echo -------------------------Changelog:-------------------------
-Changes made in %v%
+Echo Changes made in %v%
 echo Added changelog comand
 echo Set buildtoolsver to lastBuild by default
 echo Trying to improve subcommands
