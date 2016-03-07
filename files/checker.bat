@@ -13,8 +13,12 @@ echo 1.9  > config\version.txt
 echo created version.txt)
 
 :config
-if exist config\version.txt (goto last) else (echo 1.9  > version.txt
+if exist config\version.txt (goto config2) else (echo 1.9  > config\version.txt
 echo created version.txt
+goto config2)
+:config2
+if exist config\gitlocation.txt (goto last) else (echo C:\Program Files\Git\bin\bash.exe  > config\gitlocation.txt
+echo created gitlocation.txt
 goto last)
 
 :last
