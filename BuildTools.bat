@@ -1,7 +1,7 @@
 @echo off
 
 set startdir=%~dp0
-set v=0.7 Beta
+set v=0.8 Beta
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content= %%i
 
@@ -24,7 +24,7 @@ start "Checker" %startdir%\files\checker.bat
 goto ready
 
 :ready
-start "Buildtools Updater v.0.7 Beta" /Max /i %startdir%\files\menu.bat
+start "Buildtools Updater v.%v%" /Max /i %startdir%\files\menu.bat
 goto exit
 
 :exit
