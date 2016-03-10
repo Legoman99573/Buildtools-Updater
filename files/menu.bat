@@ -1,7 +1,7 @@
 @echo off
 
 set startdir=%~dp0
-set v=0.7 Beta
+set v=0.8 Beta
 
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content= %%i
@@ -18,15 +18,32 @@ If /i "%_1%"=="help" goto help
 If /i "%_1%"=="exit" goto exit
 
 :update
-start "Buildtools Updater v.%v% | Delete Buildtools.jar" /b %startdir%\..\buildtools\delbt.bat
-%content% --login -i -c "curl -o buildtools/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
-@echo Updated BuildTools
+start "Buildtools Updater v.%v% | Delete Buildtools.jar" /b %startdir%buildtools\delbt.bat
+%content% --login -i -c "curl -o files/buildtools/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
+if exist %startdir%buildtools\BuildTools.jar (@echo Updated BuildTools) else (@echo An error has occured. Make sure folder has write access)
 goto start
 
 :run
+@echo getting Buildtools Ready
+if exist %startdir%\buildtools\apache-maven-3.2.5 (move %startdir%\buildtools\apache-maven-3.2.5 %startdir%..\) else (echo Folder "apache-maven-3.2.5" doesnt exist may be ignored)
+if exist %startdir%\buildtools\BuildData (move %startdir%\buildtools\BuildData %startdir%..\) else (echo Folder "BuildData" doesnt exist may be ignored)
+if exist %startdir%\buildtools\Bukkit (move %startdir%\buildtools\Bukkit %startdir%..\) else (echo Folder "Bukkit" doesnt exist may be ignored)
+if exist %startdir%\buildtools\CraftBukkit (move %startdir%\buildtools\CraftBukkit %startdir%..\) else (echo "Folder" CraftBukkit doesnt exist may be ignored)
+if exist %startdir%\buildtools\Spigot (move %startdir%\buildtools\Spigot %startdir%..\) else (echo Folder "Spigot" doesnt exist may be ignored)
+if exist %startdir%\buildtools\work (move %startdir%\buildtools\work %startdir%..\) else (echo Folder "work" doesnt exist may be ignored)
+
 @echo running BuildTools :)
-start "Buildtools Updater v.%v% | Run BuildTools.jar" /i /wait /SEPARATE %startdir%buildtools\run.bat
+start "Buildtools Updater v.%v% | Running Buildtools.jar" /wait %startdir%buildtools\run2.bat
+@echo Moving Buildtools Folder back to its original spot
+move %startdir%..\apache-maven-3.2.5 %startdir%\buildtools\
+move %startdir%..\BuildData %startdir%\buildtools\
+move %startdir%..\Bukkit %startdir%\buildtools\
+move %startdir%..\CraftBukkit %startdir%\buildtools\
+move %startdir%..\Spigot %startdir%\buildtools\
+move %startdir%..\work %startdir%\buildtools\
+
 @echo Finished running BuildTools
+
 goto start
 
 :help
