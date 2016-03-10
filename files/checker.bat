@@ -23,12 +23,12 @@ goto next
 
 :next
 if Exist %startdir%\files\buildtools\delbt.bat (goto next2) else (%content% --login -i -c "curl -o delbt.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/buildtools/delbt.bat"
-move delbt.bat %startdir%\files\bt)
+move delbt.bat %startdir%\files\buildtools)
 goto next2
 
 :next2
 if Exist %startdir%\files\buildtools\run.bat (goto exit) else (%content% --login -i -c "curl -o run.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/buildtools/run.bat"
-move run.bat %startdir%\files\bt)
+move run.bat %startdir%\files\buildtools)
 
 
 :exit
