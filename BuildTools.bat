@@ -21,7 +21,7 @@ move checker.bat %startdir%\files)
 goto next
 
 :next
-start "Checker" %startdir%\files\checker.bat
+start "Buildtools Updater v.%v% | Checker" /wait %startdir%\files\checker.bat
 goto next2
 
 :next2
