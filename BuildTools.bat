@@ -22,6 +22,12 @@ goto next
 
 :next
 start "Checker" %startdir%\files\checker.bat
+goto next2
+
+:next2
+if Exist %startdir%\files\menu.bat (goto ready) else (md %startdir%\files
+%content% --login -i -c "curl -o menu.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/menu.bat"
+move menu.bat %startdir%\files)
 goto ready
 
 :ready
