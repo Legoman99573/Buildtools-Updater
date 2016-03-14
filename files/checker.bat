@@ -1,6 +1,8 @@
 @echo off
 
-set startdir=%~dp0
+set startdir=%~dp0.
+set v=
+for /f "delims=" %%i in ('type files\btversion.txt') do set content= %%i
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content= %%i
 
@@ -21,18 +23,18 @@ goto config)
 
 :config
 
-if Exist %startdir%\files\menu.bat (goto next) else (%content% --login -i -c "curl -o menu.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/menu.bat"
-move menu.bat %startdir%\files)
-goto next
-
-:next
 if Exist %startdir%\files\buildtools\delbt.bat (goto next2) else (%content% --login -i -c "curl -o delbt.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/buildtools/delbt.bat"
 move delbt.bat %startdir%\files\buildtools)
 goto next2
 
 :next2
-if Exist %startdir%\files\buildtools\run.bat (goto exit) else (%content% --login -i -c "curl -o run.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/buildtools/run.bat"
+if Exist %startdir%\files\buildtools\run.bat (goto next3) else (%content% --login -i -c "curl -o run.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/buildtools/run.bat"
 move run.bat %startdir%\files\buildtools)
+goto next3
+
+:next3
+if Exist %startdir%\files\plugin-%v%.bat (goto exit) else (%content% --login -i -c "curl -o plugin-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/plugin.bat"
+move plugin-%v%.bat %startdir%\files\buildtools)
 
 
 :exit
