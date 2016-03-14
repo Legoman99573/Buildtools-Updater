@@ -11,6 +11,9 @@ if exist %startdir%\config\gitlocation.txt (goto boot) else (md config
 @echo 1.9 >> config\version.txt
 @echo MyPlugin >> config\plugin.txt
 )
+If exist %startdir%\files\checker.bat (del /f files\checker.bat)
+If exist %startdir%\files\menu.bat (del /f files\menu.bat)
+If exist %startdir%\files\plugin.bat (del /f files\plugin.bat)
 
 :boot
 @echo This build is in beta and could break important files. Continue: 
@@ -24,7 +27,7 @@ If /i "%_1%"=="n" goto stop
 :start
 cls
 del /f files\btversion.txt
-if Exist %startdir%\files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
+if not exist %startdir%\files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
 %content% --login -i -c "curl -o btversion.txt https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/btversion.txt"
 move btversion.txt %startdir%\files
 If not exist %startdir%\files (md %startdir%\files) else (@echo Directory already exists)
