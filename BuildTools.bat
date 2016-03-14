@@ -6,6 +6,11 @@ for /f "delims=" %%i in ('type files\btversion.txt') do set v= %%i
 
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content= %%i
+if exist %startdir%\config\gitlocation.txt (goto boot) else (md config
+@echo C:\Program Files\Git\bin\bash.exe >> config\gitlocation.txt
+@echo 1.9 >> config\version.txt
+@echo MyPlugin >> config\plugin.txt
+)
 
 :boot
 @echo This build is in beta and could break important files. Continue: 
@@ -18,8 +23,8 @@ If /i "%_1%"=="n" goto stop
 
 :start
 cls
-if Exist %startdir%\files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
 del /f files\btversion.txt
+if Exist %startdir%\files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
 %content% --login -i -c "curl -o btversion.txt https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/btversion.txt"
 move btversion.txt %startdir%\files
 If not exist %startdir%\files (md %startdir%\files) else (@echo Directory already exists)
