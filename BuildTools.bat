@@ -11,9 +11,9 @@ if exist %startdir%\config\gitlocation.txt (goto boot) else (md config
 @echo 1.9 >> config\version.txt
 @echo MyPlugin >> config\plugin.txt
 )
-If exist %startdir%\files\checker.bat (del /f files\checker.bat)
-If exist %startdir%\files\menu.bat (del /f files\menu.bat)
-If exist %startdir%\files\plugin.bat (del /f files\plugin.bat)
+If exist %startdir%files\checker.bat (del /f files\checker.bat)
+If exist %startdir%files\menu.bat (del /f files\menu.bat)
+If exist %startdir%files\plugin.bat (del /f files\plugin.bat)
 
 :boot
 @echo This build is in beta and could break important files. Continue: 
@@ -27,27 +27,27 @@ If /i "%_1%"=="n" goto stop
 :start
 cls
 del /f files\btversion.txt
-if not exist %startdir%\files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
+if not exist %startdir%files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
 %content% --login -i -c "curl -o btversion.txt https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/btversion.txt"
-move btversion.txt %startdir%\files
-If not exist %startdir%\files (md %startdir%\files) else (@echo Directory already exists)
+move btversion.txt %startdir%files
+If not exist %startdir%files (md %startdir%files) else (@echo Directory already exists)
 %content% --login -i -c "curl -o checker-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/checker.bat"
-move checker-%v%.bat %startdir%\files)
+move checker-%v%.bat %startdir%files)
 goto next
 
 :next
-start "Buildtools Updater v.%v% | Checker" /wait %startdir%\files\checker-%v%.bat
+start "Buildtools Updater v.%v% | Checker" /wait %startdir%files\checker-%v%.bat
 goto next2
 
 :next2
-if Exist %startdir%\files\menu-%v%.bat (goto ready) else (del /f files\menu-*.bat
-md %startdir%\files
+if Exist %startdir%files\menu-%v%.bat (goto ready) else (del /f files\menu-*.bat
+md %startdir%files
 %content% --login -i -c "curl -o menu-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/menu.bat"
-move menu-%v%.bat %startdir%\files)
+move menu-%v%.bat %startdir%files)
 goto ready
 
 :ready
-start "Buildtools Updater v.%v%" /Max /i %startdir%\files\menu-%v%.bat
+start "Buildtools Updater v.%v%" /Max /i %startdir%files\menu-%v%.bat
 goto exit
 
 :exit
