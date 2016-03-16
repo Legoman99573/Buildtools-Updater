@@ -23,7 +23,7 @@ If /i "%_1%"=="exit" goto exit
 :update
 cls
 start "Buildtools Updater v.%v% | Delete Buildtools.jar" /b %startdir%buildtools\delbt.bat
-%content% --login -i -c "curl -o files/buildtools/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
+"%content%" --login -i -c "curl -o files/buildtools/BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastBuild/artifact/target/BuildTools.jar"
 if exist %startdir%buildtools\BuildTools.jar (@echo Updated BuildTools) else (@echo An error has occured. Make sure folder has write access)
 goto start
 
@@ -38,7 +38,7 @@ if exist %startdir%\buildtools\Spigot (move %startdir%\buildtools\Spigot %startd
 if exist %startdir%\buildtools\work (move %startdir%\buildtools\work %startdir%..\) else (echo Folder "work" doesnt exist may be ignored)
 
 @echo running BuildTools :)
-start "Buildtools Updater v.%v% | Running Buildtools.jar" /wait %startdir%buildtools\run2.bat
+start "Buildtools Updater v.%v% | Running Buildtools.jar" /wait %startdir%buildtools\run.bat
 @echo Moving Buildtools Folder back to its original spot
 move %startdir%..\apache-maven-3.2.5 %startdir%\buildtools\
 move %startdir%..\BuildData %startdir%\buildtools\
@@ -75,19 +75,19 @@ If exist bungee\modules\cmd_list.jar (del /f bungee\modules\cmd_list.jar)
 If exist bungee\modules\cmd_alert.jar (del /f bungee\modules\cmd_alert.jar)
 If exist bungee\modules\reconnect_yaml.jar (del /f bungee\modules\reconnect_yaml.jar)
 
-%content% --login -i -c "curl -o bungee/BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/bootstrap/target/BungeeCord.jar"
+"%content%" --login -i -c "curl -o bungee/BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/bootstrap/target/BungeeCord.jar"
 
-%content% --login -i -c "curl -o bungee/modules/cmd_alert.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_alert.jar"
+"%content%" --login -i -c "curl -o bungee/modules/cmd_alert.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_alert.jar"
 
-%content% --login -i -c "curl -o bungee/modules/cmd_find.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_find.jar"
+"%content%" --login -i -c "curl -o bungee/modules/cmd_find.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_find.jar"
 
-%content% --login -i -c "curl -o bungee/modules/cmd_list.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_list.jar"
+"%content%" --login -i -c "curl -o bungee/modules/cmd_list.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_list.jar"
 
-%content% --login -i -c "curl -o bungee/modules/cmd_server.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_server.jar"
+"%content%" --login -i -c "curl -o bungee/modules/cmd_server.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_server.jar"
 
-%content% --login -i -c "curl -o bungee/modules/cmd_send.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_send.jar"
+"%content%" --login -i -c "curl -o bungee/modules/cmd_send.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_send.jar"
 
-%content% --login -i -c "curl -o bungee/modules/reconnect_yaml.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/reconnect_yaml.jar"
+"%content%" --login -i -c "curl -o bungee/modules/reconnect_yaml.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/reconnect_yaml.jar"
 @echo Updated BungeeCord and all its Modules
 goto start
 
