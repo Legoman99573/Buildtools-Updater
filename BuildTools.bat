@@ -31,7 +31,7 @@ if not exist %startdir%files\checker-%v%.bat (goto next) else (del /f files\chec
 %content% --login -i -c "curl -o btversion.txt https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/btversion.txt"
 move btversion.txt %startdir%files
 If not exist %startdir%files (md %startdir%files) else (@echo Directory already exists)
-%content% --login -i -c "curl -o checker-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/checker.bat"
+%content% --login -i -c "curl -o checker-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/%v%/files/checker.bat"
 move checker-%v%.bat %startdir%files)
 goto next
 
@@ -42,7 +42,7 @@ goto next2
 :next2
 if Exist %startdir%files\menu-%v%.bat (goto ready) else (del /f files\menu-*.bat
 md %startdir%files
-%content% --login -i -c "curl -o menu-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/menu.bat"
+%content% --login -i -c "curl -o menu-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/%v%/files/menu.bat"
 move menu-%v%.bat %startdir%files)
 goto ready
 
