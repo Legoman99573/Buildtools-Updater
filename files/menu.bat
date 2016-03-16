@@ -17,6 +17,7 @@ If /i "%_1%"=="update" goto update
 If /i "%_1%"=="run" goto run
 If /i "%_1%"=="help" goto help
 If /i "%_1%"=="plugin" goto plugin
+If /i "%_1%"=="bungee" goto bungee
 If /i "%_1%"=="exit" goto exit
 
 :update
@@ -58,6 +59,36 @@ goto start
 :plugin
 cls
 start "Buildtools Updater v.%v% | Buildtools Help" /wait ..\files\plugin-%v%.bat
+goto start
+
+:bungee
+cls
+@echo Updating BungeeCord and its modules.
+If not exist %startdir%bungee (md bungee)
+If not exist %startdir%bungee\modules (md bungee\modules)
+
+If exist bungee\BungeeCord.jar (del /f bungee\BungeeCord.jar)
+If exist bungee\modules\cmd_find.jar (del /f bungee\modules\cmd_find.jar)
+If exist bungee\modules\cmd_server.jar (del /f bungee\modules\cmd_server.jar)
+If exist bungee\modules\cmd_send.jar (del /f bungee\modules\cmd_send.jar)
+If exist bungee\modules\cmd_list.jar (del /f bungee\modules\cmd_list.jar)
+If exist bungee\modules\cmd_alert.jar (del /f bungee\modules\cmd_alert.jar)
+If exist bungee\modules\reconnect_yaml.jar (del /f bungee\modules\reconnect_yaml.jar)
+
+%content% --login -i -c "curl -o bungee/BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/bootstrap/target/BungeeCord.jar"
+
+%content% --login -i -c "curl -o bungee/modules/cmd_alert.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_alert.jar"
+
+%content% --login -i -c "curl -o bungee/modules/cmd_find.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_find.jar"
+
+%content% --login -i -c "curl -o bungee/modules/cmd_list.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_list.jar"
+
+%content% --login -i -c "curl -o bungee/modules/cmd_server.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_server.jar"
+
+%content% --login -i -c "curl -o bungee/modules/cmd_send.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/cmd_send.jar"
+
+%content% --login -i -c "curl -o bungee/modules/reconnect_yaml.jar http://ci.md-5.net/job/BungeeCord/lastBuild/artifact/module/cmd-alert/target/reconnect_yaml.jar"
+@echo Updated BungeeCord and all its Modules
 goto start
 
 :error1
