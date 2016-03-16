@@ -26,7 +26,7 @@ If exist %startdir%..\plugin-fixed (@echo Created folder "plugin-fixed" Successf
 goto stop)) else (@echo Found folder: plugin-fixed) 
 
 if exist %plugin%.jar (
-%content% --login -i -c "java -jar %startdir%..\files\buildtos\BuildData/bin/SpecialSource-2.jar map -m %startdir%..\files\buildtos\CraftBukkit/deprecation-mappings.csrg -i ../plugin-pending/%plugin%.jar -o ../plugin-fixed/%plugin%-fixed.jar") else (@echo did not find %plugin%.jar in folder /plugin-pending)
+"%content%" --login -i -c "java -jar %startdir%..\files\buildtos\BuildData/bin/SpecialSource-2.jar map -m %startdir%..\files\buildtos\CraftBukkit/deprecation-mappings.csrg -i ../plugin-pending/%plugin%.jar -o ../plugin-fixed/%plugin%-fixed.jar") else (@echo did not find %plugin%.jar in folder /plugin-pending)
 
 @echo Do you want to run this again: (Y, N)
 Set /P "_1=" || Set _1=NothingChosen
