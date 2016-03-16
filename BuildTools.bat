@@ -26,11 +26,11 @@ If /i "%_1%"=="n" goto stop
 
 :start
 cls
-del /f files\btversion.txt
-if not exist %startdir%files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
-%content% --login -i -c "curl -o btversion.txt https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/master/files/btversion.txt"
-move btversion.txt %startdir%files
 If not exist %startdir%files (md %startdir%files) else (@echo Directory already exists)
+del /f files\btversion.txt
+%content% --login -i -c "curl -o btversion.txt http://thegearmc.com/update/btversion.txt"
+move btversion.txt %startdir%files
+if exist %startdir%files\checker-%v%.bat (goto next) else (del /f files\checker-*.bat
 %content% --login -i -c "curl -o checker-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/%v%/files/checker.bat"
 move checker-%v%.bat %startdir%files)
 goto next
