@@ -2,14 +2,17 @@
 
 set startdir=%~dp0
 set v=
-for /f "delims=" %%i in ('type files\btversion.txt') do set v= %%i
+for /f "delims=" %%i in ('type files\btversion.txt') do set v=%%i
 
 set content=
-for /f "delims=" %%i in ('type config\gitlocation.txt') do set content= %%i
+for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
+
 if exist %startdir%\config\gitlocation.txt (goto boot) else (md config
-@echo C:\Program Files\Git\bin\bash.exe >> config\gitlocation.txt
-@echo 1.9 >> config\version.txt
-@echo MyPlugin >> config\plugin.txt
+If exist C:\Program Files\Git\bin\bash.exe ("C:\Program Files\Git\bin\bash.exe" --login -i -c "curl -o config/gitlocation.txt http://thegearmc.com/update/gitlocation.txt"
+"C:\Program Files\Git\bin\bash.exe" --login -i -c "curl -o config/version.txt http://thegearmc.com/update/version.txt"
+"C:\Program Files\Git\bin\bash.exe" --login -i -c "curl -o config/plugin.txt http://thegearmc.com/update/plugin.txt") else ("C:\Program Files (x86)\Git\bin\bash.exe" --login -i -c "curl -o config/gitlocation.txt http://thegearmc.com/update/gitlocation.txt"
+"C:\Program Files (x86)\Git\bin\bash.exe" --login -i -c "curl -o config/version.txt http://thegearmc.com/update/version.txt"
+"C:\Program Files (x86)\Git\bin\bash.exe" --login -i -c "curl -o config/plugin.txt http://thegearmc.com/update/plugin.txt")
 )
 If exist %startdir%files\checker.bat (del /f files\checker.bat)
 If exist %startdir%files\menu.bat (del /f files\menu.bat)
