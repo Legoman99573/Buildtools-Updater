@@ -3,14 +3,15 @@
 set startdir=%~dp0
 
 set content=
-for /f "delims=" %%i in ('type ..\config\gitlocation.txt') do set content= %%i
+for /f "delims=" %%i in ('type ..\config\gitlocation.txt') do set content=%%i
 
 set plugin=
-for /f "delims=" %%i in ('type ..\config\plugin.txt') do set content= %%i
+for /f "delims=" %%i in ('type ..\config\plugin.txt') do set plugin=%%i
 
 @echo Welcome to Plugin Fixer.
 :again
-@echo Edit plugin.txt and press a keybto continue
+cls
+@echo Edit plugin.txt and press any key to continue
 pause
 
 if not exist %startdir%..\plugin-pending ( @echo Did not find folder: plugin-pending
@@ -26,7 +27,7 @@ If exist %startdir%..\plugin-fixed (@echo Created folder "plugin-fixed" Successf
 goto stop)) else (@echo Found folder: plugin-fixed) 
 
 if exist %plugin%.jar (
-"%content%" --login -i -c "java -jar %startdir%..\files\buildtos\BuildData/bin/SpecialSource-2.jar map -m %startdir%..\files\buildtos\CraftBukkit/deprecation-mappings.csrg -i ../plugin-pending/%plugin%.jar -o ../plugin-fixed/%plugin%-fixed.jar") else (@echo did not find %plugin%.jar in folder /plugin-pending)
+%content% --login -i -c "java -jar %startdir%..\files\buildtos\BuildData/bin/SpecialSource-2.jar map -m %startdir%..\files\buildtos\CraftBukkit/deprecation-mappings.csrg -i ../plugin-pending/%plugin%.jar -o ../plugin-fixed/%plugin%-fixed.jar") else (@echo did not find %plugin%.jar in folder /plugin-pending)
 
 @echo Do you want to run this again: (Y, N)
 Set /P "_1=" || Set _1=NothingChosen
