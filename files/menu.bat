@@ -11,7 +11,7 @@ if exist %content% (goto boot) else (goto error1)
 :boot
 if exist buildtools.bat (del /f buildtools.bat)
 if exist buildtools-%v% (goto boot2) else (del /f buildtools-*.bat
-%content% --login -i -c "curl -o buildtools-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/%v%/BuildTools.bat)
+%content% --login -i -c "curl -o buildtools-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/0.10.4-Beta/BuildTools.bat)
 
 :boot2
 cls
