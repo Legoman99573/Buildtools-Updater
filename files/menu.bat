@@ -9,6 +9,12 @@ for /f "delims=" %%i in ('type config\gitlocation.txt') do set content= %%i
 
 if exist %content% (goto boot) else (goto error1)
 :boot
+if exist buildtools.bat (del /f buildtools.bat)
+if exist buildtools-%v% (goto boot2) else (del /f buildtools-*.bat
+"%content%" --login -i -c "curl -o buildtools-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/%v%/BuildTools.bat)
+
+:boot2
+cls
 @echo Welcome to Buildtools Updater v.%v% 
 :start
 Set /P "_1=>" || Set _1=NothingChosen
