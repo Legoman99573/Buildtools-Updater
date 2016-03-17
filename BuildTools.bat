@@ -49,8 +49,7 @@ goto next2
 if Exist %startdir%files\menu-%v%.bat (goto ready) else (if exist %startdir%\files\menu-*.bat (del /f files\menu-*.bat) else (@echo couldnt find an old version of menu.bat. This can be ignored.
 if exist %startdir%files (@echo files directory was found) else (@echo files directory was not found. Generating directory
 md %startdir%files)
-%content% --login -i -c "curl -o files/menu-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/0.10.4-Beta/files/menu.bat "
-move menu-%v%.bat %startdir%files)
+%content% --login -i -c "curl -o files/menu-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/0.10.4-Beta/files/menu.bat ")
 goto ready
 
 :ready
