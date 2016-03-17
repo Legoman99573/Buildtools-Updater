@@ -58,8 +58,8 @@ start "Buildtools Updater v.%v%" /Max /i %startdir%files\menu-%v%.bat
 goto exit
 
 :exit
-pause
+exit
 
 :error
-@echo Current location set: %content%
+@echo Current invalid location set: %content%
 pause
