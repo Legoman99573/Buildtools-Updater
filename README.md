@@ -1,4 +1,4 @@
-# Buildtools-Updater
+# BuildTools Updater
 Update and install BuildTools automatically.
 
 ## Instructions
