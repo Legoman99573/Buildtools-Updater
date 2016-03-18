@@ -20,4 +20,4 @@ This guide shows how to install [Git for Windows](https://git-for-windows.github
 ![9](https://raw.githubusercontent.com/NatoBoram/Buildtools-Updater/0.10.4-Beta/HowTo/Git/9.PNG)
 
 ## Attributions
-[Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/) | [Legoman99573](https://github.com/Legoman99573) | [Mojang](http://mojang.com/) | [Semantic Versionning](http://semver.org/) | [Spigot](https://www.spigotmc.org/)
+[Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/) | [Git for Windows](https://git-for-windows.github.io/) | [Legoman99573](https://github.com/Legoman99573) | [Mojang](http://mojang.com/) | [Semantic Versionning](http://semver.org/) | [Spigot](https://www.spigotmc.org/)
