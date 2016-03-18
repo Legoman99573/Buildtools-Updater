@@ -113,9 +113,4 @@ Affirmer's express Statement of Purpose.
   CC0 or use of the Work.
 
 For more information, please see
-<http://creativecommons.org/publicdomain/zero/1.0/>.
-
-This script is not accociated, or endorsed by Spigot Pty.ltd, or by Mojang.
-BuildTools.jar is owned by ©Spigot Pty.ltd. Can only recieve through download of script only.
-
-I, Legoman99573, is not responsible for anything that goes wrong with your machine/host. It is recommended that you backup your machine before running this script.
+<http://creativecommons.org/publicdomain/zero/1.0/>
