@@ -7,7 +7,7 @@ Update and install BuildTools automatically.
 3. Run BuildTools.sh
 
 ### How to Install [Git for Windows](https://git-for-windows.github.io/)
-This guide shows how to install [Git for Windows](https://git-for-windows.github.io/) in order to use its maximum potency. If you didn't use these options during your install, it is recommended that you reinstall it.
+This guide shows how to install [Git for Windows](https://git-for-windows.github.io/) in order to use its maximum potency. If you didn't use these options during your installation, it is recommended that you reinstall it because some of these options are mendatory.
 
 ![1](https://raw.githubusercontent.com/NatoBoram/Buildtools-Updater/0.10.4-Beta/HowTo/Git/1.PNG)
 ![2](https://raw.githubusercontent.com/NatoBoram/Buildtools-Updater/0.10.4-Beta/HowTo/Git/2.PNG)
