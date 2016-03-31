@@ -2,7 +2,7 @@
 
 set startdir=%~dp0
 set v=
-for /f "delims=" %%i in ('type files\btversion.txt') do set v=%%i
+for /f "delims=" %%i in ('type buildtools\btversion.txt') do set v=%%i
 
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
@@ -39,14 +39,14 @@ if exist %startdir%\buildtools\Spigot (move %startdir%\buildtools\Spigot %startd
 if exist %startdir%\buildtools\work (move %startdir%\buildtools\work %startdir%..\) else (echo Folder "work" doesnt exist may be ignored)
 
 @echo running BuildTools :)
-start "Buildtools Updater v.%v% | Running Buildtools.jar" /wait %startdir%buildtools\run.bat
+start "Buildtools Updater v.%v% | Running Buildtools.jar" /wait %startdir%tasks\run.bat
 @echo Moving Buildtools Folder back to its original spot
-move %startdir%..\apache-maven-3.2.5 %startdir%\buildtools\
-move %startdir%..\BuildData %startdir%\buildtools\
-move %startdir%..\Bukkit %startdir%\buildtools\
-move %startdir%..\CraftBukkit %startdir%\buildtools\
-move %startdir%..\Spigot %startdir%\buildtools\
-move %startdir%..\work %startdir%\buildtools\
+move %startdir%apache-maven-3.2.5 %startdir%\buildtools\
+move %startdir%BuildData %startdir%\buildtools\
+move %startdir%Bukkit %startdir%\buildtools\
+move %startdir%CraftBukkit %startdir%\buildtools\
+move %startdir%Spigot %startdir%\buildtools\
+move %startdir%work %startdir%\buildtools\
 
 @echo Finished running BuildTools
 
@@ -54,7 +54,7 @@ goto start
 
 :help
 cls
-start "Buildtools Updater v.%v% | Buildtools Help" /b ..\files\help-%v%.bat
+start "Buildtools Updater v.%v% | Buildtools Help" /b help.bat
 goto start
 
 :plugin
@@ -95,7 +95,7 @@ goto start
 :error1
 cls
 @echo Error-1 has occured. Goto https://www.spigotmc.org/wiki/buildtools-updater/ to find this error
-if exist %startdir%\error (goto errorprint1) else (md error)
+if exist %startdir%error (goto errorprint1) else (md error)
 :errorprint1
 echo Link to Git: https://github.com/git-for-windows/git/releases/download/v2.7.2.windows.1/Git-2.7.2-64-bit.exe>error\error-1.txt
 cmd /c start https://github.com/git-for-windows/git/releases/download/v2.7.2.windows.1/Git-2.7.2-64-bit.exe
