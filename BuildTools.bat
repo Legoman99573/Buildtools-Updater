@@ -40,16 +40,6 @@ If /i "%_1%"=="y" goto start
 If /i "%_1%"=="N" goto stop
 If /i "%_1%"=="n" goto stop
 
-:start
-If exist %startdir%files (@echo Directory already exists) else (md %startdir%files)
-if exist files\btversion.txt (del /f files\btversion.txt) else (@echo btversion was not found. This can be ignored)
-%content% --login -i -c "curl -o files/btversion.txt http://thegearmc.com/update/btversion.txt "
-
-if exist %startdir%files\checker-%v%.bat (goto next) else (if exist %startdir%files\checker-%v%.bat (del /f files\checker-*.bat) else (@Echo Couldnt find old version of checker.bat. This can be Ignored)
-%content% --login -i -c "curl -o files/checker-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/0.10.4-Beta/files/checker.bat ")
-goto next
-
-:next
 start "Buildtools Updater v.%v% | Checker" /wait %startdir%files\checker-%v%.bat
 goto next2
 
