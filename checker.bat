@@ -6,19 +6,20 @@ for /f "delims=" %%i in ('type files\btversion.txt') do set content=%%i
 set content=
 for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
 
-if exist %startdir%\files\buildtools (goto step2) else (md files\buildtools
-echo Buildtools will be stored here>files\buildtools\info.txt
+if exist %startdir%buildtools (goto step2) else (md files\buildtools
+echo Buildtools will be stored here>buildtools\info.txt
 goto step2)
 
 :step2
-if exist %startdir%\api (goto step3) else (md api
+if exist %startdir%api (goto step3) else (md api
 echo API's will be stored here>api\info.txt
 goto step3)
 
 :step3
-if exist %startdir%\config (goto config) else (md config
+if exist %startdir%config (goto config) else (md config
 echo 1.9>config\version.txt
 echo C:\Program Files\Git\bin\bash.exe>config\gitlocation.txt
+echo MyPlugin>config\plugin.txt
 goto config)
 
 :config
