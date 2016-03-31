@@ -22,7 +22,7 @@ if Exist menu.bat (goto ready) else (@echo An error has occured. Redownload this
 goto ready
 
 :ready
-start "Buildtools Updater v.0.14-Beta" /Max /i %startdir%files\menu-%v%.bat
+start "Buildtools Updater v.0.14-Beta" /Max /i menu.bat
 goto exit
 
 :exit
