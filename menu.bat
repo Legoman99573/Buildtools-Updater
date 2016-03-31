@@ -9,11 +9,6 @@ for /f "delims=" %%i in ('type config\gitlocation.txt') do set content=%%i
 
 if exist %content% (goto boot) else (goto error1)
 :boot
-if exist buildtools.bat (del /f buildtools.bat)
-if exist buildtools-%v% (goto boot2) else (del /f buildtools-*.bat
-%content% --login -i -c "curl -o buildtools-%v%.bat https://raw.githubusercontent.com/Legoman99573/Buildtools-Updater/0.10.4-Beta/BuildTools.bat)
-
-:boot2
 cls
 @echo Welcome to Buildtools Updater v.%v% 
 :start
@@ -64,7 +59,7 @@ goto start
 
 :plugin
 cls
-start "Buildtools Updater v.%v% | Buildtools Help" /wait ..\files\plugin-%v%.bat
+start "Buildtools Updater v.%v% | Buildtools Help" /wait plugin.bat
 goto start
 
 :bungee
@@ -102,7 +97,7 @@ cls
 @echo Error-1 has occured. Goto https://www.spigotmc.org/wiki/buildtools-updater/ to find this error
 if exist %startdir%\error (goto errorprint1) else (md error)
 :errorprint1
-echo Link to Git: https://github.com/git-for-windows/git/releases/download/v2.7.2.windows.1/Git-2.7.2-64-bit.exe  > error\error-1.txt
+echo Link to Git: https://github.com/git-for-windows/git/releases/download/v2.7.2.windows.1/Git-2.7.2-64-bit.exe>error\error-1.txt
 cmd /c start https://github.com/git-for-windows/git/releases/download/v2.7.2.windows.1/Git-2.7.2-64-bit.exe
 
 :exit
